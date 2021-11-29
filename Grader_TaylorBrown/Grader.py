@@ -130,7 +130,7 @@ def main():
             
 def change_to_int(lst):
     """
-        Takes in a list and converts each object into a string
+        Takes in a list and converts each object into a Integer
     """
     tmp_lst = []
     for element in lst:
