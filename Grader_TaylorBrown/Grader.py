@@ -9,6 +9,7 @@ _____________________________________________________________
 - Took out string conversion and used the .2f format to print averages and for writing to .txt file
 - Calculated Overall grade with weighted totals for better accuracy when calculating grade
 - Shortened displayed numbers to the hundredth decimal place for better readability
+- Remove the lowest grades from SAM_TEXT and SAM_PROJ
 """
 
 
@@ -69,6 +70,13 @@ def main():
     QUIZ.sort(reverse=False)
     QUIZ.pop(0)
     
+# Pops lowest grade from SAM Textbook Assignments
+    SAM_TEXT.sort(reverse=False)
+    SAM_TEXT.pop(0)
+    
+# Pops lowest grade from SAM Projects
+    SAM_PROJ.sort(reverse=False)
+    SAM_PROJ.pop(0)
     
 # Converts lists from string objects to integers
     i_LTL = change_to_int(LTL)
@@ -106,14 +114,14 @@ def main():
     
 
 # Displays grade average for each category
-    print("L2L {0:.2f}".format(LTL_averages))
-    print("Quiz {0:.2f}".format(QUIZ_averages))
+    print("L2L      {0:.2f}".format(LTL_averages))
+    print("Quiz     {0:.2f}".format(QUIZ_averages))
     print("SAM Proj {0:.2f}".format(SAM_PROJ_averages))
-    print("SAM Cap {0:.2f}".format(SAM_CAP_averages))
+    print("SAM Cap  {0:.2f}".format(SAM_CAP_averages))
     print("SAM Text {0:.2f}".format(SAM_TEXT_averages))
     print("SAM Exam {0:.2f}".format(SAM_EXAM_averages))
-    print("Test {0:.2f}".format(TEST_averages))
-    print("OVERALL {0:.2f}".format(OVERALL_averages))
+    print("Test     {0:.2f}".format(TEST_averages))
+    print("OVERALL  {0:.2f}".format(OVERALL_averages))
     
 
 # Creates a new files named grades.txt with all the print outs displayed
@@ -130,7 +138,7 @@ def main():
             
 def change_to_int(lst):
     """
-        Takes in a list and converts each object into a Integer
+        Takes in a list and converts each object into an integer
     """
     tmp_lst = []
     for element in lst:
