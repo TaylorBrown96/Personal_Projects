@@ -1,0 +1,19 @@
+Lesson 1 topics:
+- Flask
+- Imported Modules
+- Flask app.route
+- Retriving text from an html form
+- Flask sessions
+
+Lesson 2 topics:
+- Flask POST & GET methods
+- DB Connection configuration
+- DB INSERT statements
+- DB SELECT statements
+- Dynamic loading with Jinja
+
+Lesson 3 topics:
+- DB DELETE statements
+- Proper refactoring methods with flask
+- Obfuscation with dotenv module
+- Salting and Hashing passwords with bcrypt module 

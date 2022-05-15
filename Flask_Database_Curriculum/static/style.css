@@ -1,0 +1,127 @@
+@charset "utf-8";
+
+/*
+	Taylor J. Brown
+	10MAY22
+*/
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    font-family: 'Monserat', sans-serif;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: black;
+    padding-top: 2%;
+}
+
+h1, h2 {
+    font-size: 36px;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    margin-bottom: 15px;
+}
+
+h2 {
+    max-width: 70%;
+    font-size: 86px!important;
+    font-weight: bold;
+}
+
+/* SUBMITION FORM */
+form textarea, input {
+    max-width: 97%;
+    margin: auto;
+}
+
+form label {
+    font-size: 42px;
+    padding-top: 25px;
+    padding-bottom: 17px;
+    padding-left: 20px;
+}
+
+blockquote {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+blockquote footer {
+    padding-top: 7px;
+}
+
+.delete {
+    position: absolute;
+    top:50%;
+    left:90%;
+}
+
+form .btn {
+    margin-left: 20px;
+    margin-bottom: 13px;
+}
+
+/* BLOG POST */
+.card-header {
+    font-size: 28px;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+.form-container {
+    max-width: 70%;
+    margin-bottom: 1.7em;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 8px;
+}
+
+.card {
+    max-width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 8px;
+    position: relative;
+}
+
+.card b {
+    margin-left: 75%;
+}
+
+.h1-tittle {
+    max-width: 70%;
+    margin: auto;
+}
+
+/* Sign Out */
+
+#sign-out {
+    float: right;
+    margin-right: 5%;
+}
+
+/* MOBILE */
+@media (max-width: 1156px) {
+    h2 {
+        margin: auto;
+        align-items: center;
+        font-size: 64px;
+        min-width: 448px;
+    }
+
+    .form-container, .card{
+        min-width: 448px;
+    }
+
+    .h1-tittle {
+        min-width: 448px;
+        max-width: 70%;
+        margin: auto;
+    }
+}
