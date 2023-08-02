@@ -13,11 +13,11 @@ class bcolors:
 
 # Collects the user data and performs the appropriate math 
 def main():
-    kaDecimal = getUserFloat("\nWhat is the decimal value of Ka?: ")
+    ka = getUserFloat("\nWhat is the decimal value of Ka?: ")
     powerOfKa = getUserFloat("\nWhat is the power of 10 for the Ka?: ")
     concentration = getUserFloat("\nWhat is the concentration?: ")
     
-    x = math.sqrt((kaDecimal * math.pow(10.0, powerOfKa)) * concentration)
+    x = math.sqrt((ka * math.pow(10.0, powerOfKa)) * concentration)
     pH = math.log10(x)
     ionization = (x / concentration) * 100
 
