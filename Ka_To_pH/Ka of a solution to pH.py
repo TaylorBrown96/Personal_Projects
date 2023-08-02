@@ -18,7 +18,7 @@ def main():
     molarity = getUserFloat("\nWhat is the molarity?: ")
     
     x = math.sqrt((ka * math.pow(10.0, powerOfKa)) * molarity)
-    pH = math.log10(x)
+    pH = -math.log10(x)
     ionization = (x / molarity) * 100
 
     printSolution(x, pH, ionization)
