@@ -37,7 +37,7 @@ def getUserFloat(message):
 def printSolution(x, pH, ionization):
     print("\nThe x value is: " + bcolors.OKGREEN + str("%.8f" %x) + bcolors.ENDC)
     print("The pH is: " + bcolors.OKGREEN + str("%.2f" %-pH) + bcolors.ENDC)
-    print("The ionization is: " + bcolors.OKGREEN + str("%.2f" %ionization) + "%" + bcolors.ENDC + "\n")
+    print("The ionization is: " + bcolors.OKGREEN + str("%.2f" %ionization) + "%\n" + bcolors.ENDC)
 
 
 if __name__ == "__main__":
