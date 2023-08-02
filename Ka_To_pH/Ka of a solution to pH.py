@@ -6,11 +6,6 @@ class bcolors:
     OKGREEN = '\033[92m'
     ENDC = '\033[0m'
 
-    def disable(self):
-        self.OKGREEN = ''
-        self.Fail = ''
-        self.ENDC = ''
-
 # Collects the user data and performs the appropriate math 
 def main():
     ka = getUserFloat("\nWhat is the decimal value of Ka?: ")
