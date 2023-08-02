@@ -1,21 +1,43 @@
 import math
-"""
-    This method takes in 3 values from the user and finds the pH of the acid.
 
-                                                             Example: Ka = 1.7*10^-5, concentration = 0.100 M 
-                                                                KaDecimal = 1.7,
-                                                                powerOfKa = -5,
-                                                                concentration = .100
-"""
+# Changes the text colors in the console to make it easier to read
+class bcolors:
+    FAIL = '\033[91m'
+    OKGREEN = '\033[92m'
+    ENDC = '\033[0m'
+
+    def disable(self):
+        self.OKGREEN = ''
+        self.Fail = ''
+        self.ENDC = ''
+
+# Collects the user data and performs the appropriate math 
 def main():
-    KaDecimal = float(input("What is the decimal value of Ka?\n"))
-    powerOfKa = int(input("What is the power of 10 for the Ka?\n"))
-    concentration = float(input("What is the concentration?\n"))
+    KaDecimal = getUserFloat("\nWhat is the decimal value of Ka?: ")
+    powerOfKa = getUserFloat("\nWhat is the power of 10 for the Ka?: ")
+    concentration = getUserFloat("\nWhat is the concentration?: ")
+    
+    x = math.sqrt((KaDecimal * math.pow(10.0, powerOfKa)) * concentration)
+    pH = math.log10(x)
+    ionization = (x / concentration) * 100
 
-    x  = math.sqrt((KaDecimal * math.pow(10.0, powerOfKa)) * concentration)
+    printSolution(x, pH, ionization)
+    
+# Collects the users entered data and checks to see if it is valid 
+def getUserFloat(message):
+    while True:
+        try:
+           x = float(input(message))
+           break
+        except:
+            print(bcolors.FAIL + "Please enter a valid number!" + bcolors.ENDC) 
+    return x
 
-    print("The x value is: " + str(x))
-    print("The pH is: " + str(-math.log10(x)))
+# Prints the calculations 
+def printSolution(x, pH, ionization):
+    print("\nThe x value is: " + bcolors.OKGREEN + str("%.8f" %x) + bcolors.ENDC)
+    print("The pH is: " + bcolors.OKGREEN + str("%.2f" %-pH) + bcolors.ENDC)
+    print("The ionization is: " + bcolors.OKGREEN + str("%.2f" %ionization) + "%" + bcolors.ENDC + "\n")
 
 
 if __name__ == "__main__":
