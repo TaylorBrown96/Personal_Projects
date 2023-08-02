@@ -15,11 +15,11 @@ class bcolors:
 def main():
     ka = getUserFloat("\nWhat is the decimal value of Ka?: ")
     powerOfKa = getUserFloat("\nWhat is the power of 10 for the Ka?: ")
-    concentration = getUserFloat("\nWhat is the concentration?: ")
+    molarity = getUserFloat("\nWhat is the molarity?: ")
     
-    x = math.sqrt((ka * math.pow(10.0, powerOfKa)) * concentration)
+    x = math.sqrt((ka * math.pow(10.0, powerOfKa)) * molarity)
     pH = math.log10(x)
-    ionization = (x / concentration) * 100
+    ionization = (x / molarity) * 100
 
     printSolution(x, pH, ionization)
     
