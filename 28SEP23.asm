@@ -8,6 +8,7 @@ prompt_str2: .asciiz "Enter you height: "
 
 # Result output string
 output_str1: .asciiz "Your BMI is: "
+divisionError_str1: .asciiz "You cannot divide by 0\n"
 
 # Weight category prompts
 Underweight: .asciiz "\nYou are underweight"
@@ -32,16 +33,8 @@ li $v0, 6
 syscall
 mov.s $f2, $f0
 
-# Asks the user to input their height
-li $v0, 4
-la $a0, prompt_str2
-syscall 
-
-# Stores their input
-li $v0, 6
-syscall
-mov.s $f3, $f0
-
+# Collects user height
+jal GetUserHeight
 # Calculates the BMI
 jal CalcBMI
 # Prints the BMI
@@ -118,6 +111,31 @@ PrintCategory:
 		la $a0, Obesity
 		syscall 
 		jr $ra
+	
+			
+GetUserHeight:
+	# Asks the user to input their height
+	li $v0, 4
+	la $a0, prompt_str2
+	syscall 
+
+	# Stores their input
+	li $v0, 6
+	syscall
+	mov.s $f3, $f0
+	
+	# Checks to see if input is equal to or less that 0
+	c.le.s $f3, $f7
+	bc1t DivisionError
+	jr $ra
+	
+	# Prompts the user that you cannot divide by zero
+	DivisionError:
+		li $v0, 4
+		la $a0, divisionError_str1
+		syscall 
+		j GetUserHeight
+		
 
 Done:
 	# DO NOT CHANGE
