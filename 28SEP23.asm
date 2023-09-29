@@ -8,13 +8,12 @@ prompt_str2: .asciiz "Enter you height: "
 
 # Result output string
 output_str1: .asciiz "Your BMI is: "
-newline: .asciiz "\n"
 
 # Weight category prompts
-Underweight: .asciiz "You are underweight"
-Normal_weight: .asciiz "You are at a normal weight"
-Overweight: .asciiz "You are overweight"
-Obesity: .asciiz "You are obese"
+Underweight: .asciiz "\nYou are underweight"
+Normal_weight: .asciiz "\nYou are at a normal weight"
+Overweight: .asciiz "\nYou are overweight"
+Obesity: .asciiz "\nYou are obese"
 
 # Sets constants
 x: .float 703.0
@@ -82,11 +81,6 @@ PrintResults:
 	
 	
 PrintCategory:
-	# Prints a new line
-	li $v0, 4       
-	la $a0, newline       
-	syscall
-	
 	# Loads category values
 	la $a1, UW
 	l.s $f4, ($a1)
