@@ -1,3 +1,6 @@
+# Author: Taylor J. Brown
+# Date: 28SEP23
+
 .data
 # User input prompts
 prompt_str1: .asciiz "Enter your weight: "
