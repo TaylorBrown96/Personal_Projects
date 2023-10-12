@@ -59,7 +59,8 @@ menu:
 	syscall
 	# Reloads the menu
 	j menu
-	
+
+
 credit:
 	# Returns to menu loop
 	j menu
