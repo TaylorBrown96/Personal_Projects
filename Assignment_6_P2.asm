@@ -86,8 +86,9 @@ balanceProbe:
 	
 # DO NOT CHANGE	
 end:
+	# Displays exit prompt
 	li $v0,4
-	la $a0, exit_prompt # Displays at the termination event
+	la $a0, exit_prompt 
 	syscall
 
 	# Terminates the program
