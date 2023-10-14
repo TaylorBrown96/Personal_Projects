@@ -1,15 +1,17 @@
 # Author: Taylor J. Brown
-# Date: 12OCT23
+# Date: 13OCT23
 
 .data 
+
 initalize_balance: .asciiz "Please indicate how much money you're staring with (Whole dollar amount no cents): "
 
-menu_str: .asciiz "\nMENU\n1. Credit\n2. Debit\n3. Check Balance\n4. Exit\n"
+menu_str: .asciiz "\nMENU\n1. Withdraw\n2. Deposit\n3. Check Balance\n4. Exit\n"
 user_menu_choice: .asciiz ":>"
 option_error: .asciiz "\nInvalid option!\n"
 
-credit_str: .asciiz "\n"
-debit_str: .asciiz "\n"
+withdrawal_str: .asciiz "\nHow much would you like to withdraw?\n:>"
+deposit_str: .asciiz "\nHow much would you like to deposit?\n:>"
+new_balance_str: .asciiz "\nYour new balance is: $"
 balance_str: .asciiz "\nYour current balance is: $"
 exit_prompt: .asciiz "Thank you for banking with us!\n"
 
@@ -48,8 +50,8 @@ menu:
 	addi $t4, $zero, 4
 	
 	# Decision processing
-	beq $t5, $t1, credit
-	beq $t5, $t2, debit
+	beq $t5, $t1, withdraw
+	beq $t5, $t2, deposit
 	beq $t5, $t3, balanceProbe
 	beq $t5, $t4, end
 	
@@ -61,14 +63,55 @@ menu:
 	j menu
 
 
-credit:
+withdraw:
+	# Display the withdrawal prompt
+	li $v0, 4
+	la $a0, withdrawal_str
+	syscall  
+	
+	# Store user's input
+	li $v0, 5 
+	syscall 
+	move $t5, $v0
+	
+	# Subtract the amount from the users balance and prints the new balance
+	sub $t0, $t0, $t5
+	jal newBalance
+
 	# Returns to menu loop
 	j menu
 	
 	
-debit:
+deposit:
+	# Display the deposit prompt
+	li $v0, 4
+	la $a0, deposit_str
+	syscall  
+	
+	# Store user's input
+	li $v0, 5 
+	syscall 
+	move $t5, $v0
+	
+	# Add the amount to the users balance and prints the new balance
+	add $t0, $t0, $t5 
+	jal newBalance
+
 	# Returns to menu loop
 	j menu
+	
+
+newBalance:
+	# Prints the new balance
+	li $v0, 4
+	la $a0, new_balance_str
+	syscall
+	li $v0, 1
+	add $a0, $zero, $t0
+	syscall
+	
+	# Return to caller
+	jr $ra
 	
 	
 balanceProbe:
